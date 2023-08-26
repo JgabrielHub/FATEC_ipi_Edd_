@@ -5,7 +5,6 @@ void f1(int a){
     printf("a dentro de f1 alterado %d\n", a);
 }
 void f2(int *a){
-    printf("conteudo referenciado pelo ponteiro a de f2: %d\n", *a);
     *a = *a +1;
     printf("conteudo referenciado pelo ponteiro a de f2: %d\n", *a);
 }
