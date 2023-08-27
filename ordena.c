@@ -6,6 +6,7 @@ void gera(int *, int);
 void exibe(char* , int *, int);
 void bubble(int *, int, int *, int *);
 void insertion(int *, int, int *, int *);
+void selection(int *, int, int *, int *);
 int main(){
     int *v, n;
     int trocas, comparacoes;
@@ -29,11 +30,17 @@ int main(){
         //exibir
         exibe("Vetor gerado",v, n);
         //bubble
-        ini = time(0);
-        //bubble(v, n, &trocas, &comparacoes);
-        fim = time(0);
-        //isertion
-        insertion(v, n, & comparacoes, & trocas);
+            //ini = time(0);
+            //bubble(v, n, &trocas, &comparacoes);
+            //fim = time(0);
+        //insertion
+            //ini = time(0);
+            //insertion(v, n, & comparacoes, & trocas);
+            //fim = time(0);
+        //selection
+            ini = time(0);
+            selection(v, n, & comparacoes, & trocas);
+            fim = time(0);
         //exibir
         exibe("Vetor ordenado", v, n);
         printf("\nTempo para tamanho %d: %ld", n, fim-ini);
@@ -95,9 +102,25 @@ int i, j, aux;
         for(j = i -1; j >= 0 && v[j] > aux; j--){
             *trocas = *trocas + 1;
             v[ j + 1] = v[j];
-        }   
-         v[j + 1] = aux;
+        }          
+    v[j + 1] = aux;
+    }              
+}
+void selection(int *v,int n,int *comparacoes, int *trocas){
+    int i, j, aux, i_min;
+    for (i = 0; i < n - 1; i++)
+    {
+        *comparacoes = *comparacoes + 1;
+        i_min = i;
+        for (j = i + 1; j < n; j++)
+        {
+            *trocas = *trocas + 1;
+            if(v[j] < v[i_min]){
+                i_min = j;
+            }  
         }
-        
+        aux = v[i];
+        v[i] = v[i_min];
+        v[i_min] = aux;
     }
-    
+}
