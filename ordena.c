@@ -7,6 +7,8 @@ void exibe(char* , int *, int);
 void bubble(int *, int, int *, int *);
 void insertion(int *, int, int *, int *);
 void selection(int *, int, int *, int *);
+int soma(int *, int);
+float media(int *, int);
 int main(){
     int *v, n;
     int trocas, comparacoes;
@@ -30,21 +32,26 @@ int main(){
         //exibir
         exibe("Vetor gerado",v, n);
         //bubble
-            //ini = time(0);
-            //bubble(v, n, &trocas, &comparacoes);
-            //fim = time(0);
+            ini = time(0);
+            bubble(v, n, &trocas, &comparacoes);
+            fim = time(0);
         //insertion
             //ini = time(0);
             //insertion(v, n, & comparacoes, & trocas);
             //fim = time(0);
         //selection
-            ini = time(0);
-            selection(v, n, & comparacoes, & trocas);
-            fim = time(0);
+            //ini = time(0);
+            //selection(v, n, & comparacoes, & trocas);
+            //fim = time(0);
         //exibir
         exibe("Vetor ordenado", v, n);
         printf("\nTempo para tamanho %d: %ld", n, fim-ini);
         printf("\nforam realizadas %d comparacoes e %d trocas", comparacoes, trocas);
+        
+        //somar
+        printf("\na soma dos vetores é de: %d\n", soma(v, n));
+        //media
+        printf("\na media é de: %f\n", media(v, n));
         //Liberar memória
         free(v);
         //ler novo tamanho
@@ -123,4 +130,14 @@ void selection(int *v,int n,int *comparacoes, int *trocas){
         v[i] = v[i_min];
         v[i_min] = aux;
     }
+}
+int soma(int *v,int n){
+    int i, s;
+    for(i = 0, s = 0; i < n; s += v[i++]);
+    return s;
+}
+float media(int *v, int n) {
+    float s;
+    s = (float) soma(v,n)/n;
+    return s;
 }
